@@ -1,5 +1,5 @@
 import React from "react";
-// import Navbar from "./Component/Navbar";
+import Navbar from "./Component/Navbar";
 import Brands from "./Pages/Brands";
 import Herosection from "./Pages/Herosection";
 // import Productsshower from "./Pages/ProductsShowcase";
