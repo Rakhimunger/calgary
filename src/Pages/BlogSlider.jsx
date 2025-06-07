@@ -1,9 +1,8 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 
-import Home from "../assets/Home.jpg";
-import Home5 from "../assets/Home5.jpg";
-import Home6 from "../assets/Home6.jpg";
+import House from "../assets/House.jpg";
+import House2 from "../assets/House2.jpg";
 
 const blogPosts = [
   {
@@ -11,20 +10,20 @@ const blogPosts = [
       "5 Best Gas Fireplace Brands in 2025 (Top Market Competitors Ranked)",
     date: "June 7, 2025",
     category: "Insights",
-    image: Home,
+    image: House,
   },
   {
     title: "Top 10 Tips for Fireplace Efficiency: Enhance Your Home’s Warmth",
     date: "June 7, 2025",
     category: "Home Comfort",
-    image: Home6,
+    image: House2,
   },
   {
     title:
       "Selecting Fireplaces for New Homes: A Builder’s Guide to Innovation and Style",
     date: "June 7, 2025",
     category: "How-To Guides",
-    image: Home5,
+    image: House,
   },
 ];
 
