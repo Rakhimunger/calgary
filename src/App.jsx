@@ -6,8 +6,10 @@ import ProductsShowcase from "./Pages/ProductsShowcase";
 import ServicesSection from "./Pages/ServicesSection";
 // import Testimonals from "./Pages/Testimonials";
 import Header from "./Component/Header";
+import Happy from "./Pages/Happy";
 import StepsSection from "./Pages/StepsSection";
 import BlogSlider from "./Pages/BlogSlider";
+import GetTouch from "./Pages/GetTouch";
 
 const App = () => {
   return (
@@ -20,6 +22,9 @@ const App = () => {
       <BlogSlider />
       <ServicesSection />
       <ProductsShowcase />
+      <Happy />
+
+      <GetTouch />
       {/* <Testimonals /> */}
     </div>
   );
