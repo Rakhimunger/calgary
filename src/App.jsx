@@ -6,7 +6,7 @@ import Herosection from "./Pages/Herosection";
 // import ServicesSection from "./Pages/ServicesSection";
 // import Testimonals from "./Pages/Testimonials";
 import Header from "./Component/Header";
-// import StepsSection from "./Pages/StepsSection";
+import StepsSection from "./Pages/StepsSection";
 // import BlogSlider from "./Pages/BlogSlider";
 
 const App = () => {
@@ -16,8 +16,8 @@ const App = () => {
       <Header />
       <Brands />
       <Herosection />
-      {/* <StepsSection />
-      <BlogSlider /> */}
+      <StepsSection />
+      {/* <BlogSlider /> */}
 
       {/* <ServicesSection />
       <Productsshower />
