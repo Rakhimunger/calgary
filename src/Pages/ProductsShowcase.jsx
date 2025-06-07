@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
-const ProductsShowcase = () => {
-  return <div>ProductsShowcase</div>;
-};
+// const ProductsShowcase = () => {
+//   return <div>ProductsShowcase</div>;
+// };
 
-export default ProductsShowcase;
+// export default ProductsShowcase;
