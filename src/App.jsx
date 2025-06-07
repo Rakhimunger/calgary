@@ -7,7 +7,7 @@ import Herosection from "./Pages/Herosection";
 // import Testimonals from "./Pages/Testimonials";
 import Header from "./Component/Header";
 import StepsSection from "./Pages/StepsSection";
-// import BlogSlider from "./Pages/BlogSlider";
+import BlogSlider from "./Pages/BlogSlider";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
       <Brands />
       <Herosection />
       <StepsSection />
-      {/* <BlogSlider /> */}
+      <BlogSlider />
 
       {/* <ServicesSection />
       <Productsshower />
