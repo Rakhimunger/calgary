@@ -42,6 +42,7 @@ const cardVariants = {
     transition: { duration: 0.6, ease: "easeOut" },
   },
 };
+
 const iconVariants = {
   hover: {
     scale: [1, 1.2, 1],
@@ -76,6 +77,7 @@ const StepsSection = () => {
             >
               {step.icon}
             </motion.div>
+
             <div className="flex items-center mb-2 w-full justify-center sm:justify-start">
               <div className="bg-blue-700 text-white font-semibold rounded-full w-7 h-7 flex items-center justify-center mr-3 text-sm sm:text-base">
                 {step.number}
@@ -84,6 +86,7 @@ const StepsSection = () => {
                 {step.title}
               </h3>
             </div>
+
             <p className="text-gray-600 text-center sm:text-left text-xs sm:text-sm leading-relaxed">
               {step.description}
             </p>
