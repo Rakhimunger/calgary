@@ -29,43 +29,70 @@ const blogPosts = [
 
 const BlogCards = () => {
   return (
-    <div className="w-full px-4 sm:px-6 py-10 bg-gradient-to-b from-white to-blue-50">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-sky-600 mb-8">
+    <div className="bg-gradient-to-b from-white via-teal-50 to-blue-100 py-14 px-6 sm:px-10">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-center text-teal-700 tracking-tight mb-10 drop-shadow-md">
+        Latest News{" "}
+        <span className="text-gray-900 font-light">Stay Informed</span>
+      </h1>
+
+      <h2 className="text-2xl md:text-3xl font-semibold text-center text-sky-700 mb-12">
         🔥 Discover Fireplace Tips, Trends & Style
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {blogPosts.map((post, index) => (
-          <div
+          <article
             key={index}
-            className="group bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
+            className="group bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-400 flex flex-col overflow-hidden animate-fadeIn"
+            style={{ animationDelay: `${index * 150}ms` }}
           >
-            <div className="overflow-hidden">
+            <div className="overflow-hidden rounded-t-2xl">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-40 sm:h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
               />
             </div>
 
-            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div className="p-6 flex flex-col justify-between flex-1">
               <div>
-                <p className="text-xs sm:text-sm text-gray-400 mb-1">
-                  {post.date} • {post.category}
+                <p className="text-xs sm:text-sm text-gray-500 mb-2 tracking-wide uppercase">
+                  {post.date} &bull; {post.category}
                 </p>
-                <h3 className="text-sm sm:text-base font-semibold text-gray-800 group-hover:text-sky-600 transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:text-sky-700 transition-colors duration-300 leading-snug">
                   {post.title}
                 </h3>
               </div>
 
-              <div className="flex items-center gap-1 mt-4 text-sm text-sky-600 font-medium transition-all group-hover:gap-2 duration-200">
-                <span>Read More</span>
-                <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+              <div className="mt-6 flex items-center justify-end gap-2">
+                <button
+                  aria-label={`Read more about ${post.title}`}
+                  className="inline-flex items-center gap-2 text-sky-700 font-semibold text-sm sm:text-base hover:text-sky-900 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 rounded"
+                >
+                  Read More <FaArrowRight className="inline-block" />
+                </button>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease forwards;
+        }
+      `}</style>
     </div>
   );
 };

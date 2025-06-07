@@ -54,7 +54,7 @@ const iconVariants = {
 const StepsSection = () => {
   return (
     <section className="bg-white py-8 px-4 sm:px-8 md:px-16 lg:px-24">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-900 mb-10">
+      <h2 className="text-3xl sm:text-3xl font-bold text-center text-blue-900 mb-10">
         Our Step-by-Step Process
       </h2>
 

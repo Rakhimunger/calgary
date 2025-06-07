@@ -19,7 +19,7 @@ export default function ServicesSection() {
 
   return (
     <div className="w-full py-10 px-4 bg-white">
-      <h2 className="text-2xl font-bold text-center mb-6">
+      <h2 className="text-5xl font-bold text-center mb-6">
         Our Fireplace Services
       </h2>
       <div className="relative">

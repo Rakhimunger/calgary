@@ -35,7 +35,7 @@ export default function HeroSection() {
           Do not hesitate to say Bonjour
         </motion.p>
 
-        <button className="inline-flex items-center px-6 py-3 border border-whitetext-black font-semibold rounded-full hover:bg-white hover:text-black transition duration-300">
+        <button className="inline-flex items-center px-6 py-3 border border-white text-black font-semibold rounded-full hover:bg-white hover:text-black transition duration-300">
           Let’s Talk <ArrowUpRight className="ml-2" size={20} />
         </button>
       </div>

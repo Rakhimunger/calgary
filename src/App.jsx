@@ -18,12 +18,12 @@ const App = () => {
       <Header />
       <Brands />
       <Herosection />
-      <StepsSection />
-      <BlogSlider />
-      <ServicesSection />
       <ProductsShowcase />
-      <Happy />
+      <StepsSection />
 
+      <ServicesSection />
+      <BlogSlider />
+      <Happy />
       <GetTouch />
       {/* <Testimonals /> */}
     </div>

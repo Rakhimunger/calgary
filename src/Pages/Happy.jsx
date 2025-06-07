@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail, PhoneCall, Smile } from "lucide-react";
 
-export default function HappyCustomersPage() {
+export default function Happy() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-50 px-4 py-16 sm:px-8 md:px-20">
       {/* Section Header */}
@@ -60,7 +60,7 @@ export default function HappyCustomersPage() {
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
           <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full hover:scale-105 transition transform shadow-lg">
-            <PhoneCall size={20} /> Call Us
+            <PhoneCall size={20} /> Contact Us
           </button>
           <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white rounded-full hover:scale-105 transition transform shadow-lg">
             <Mail size={20} /> Send Message

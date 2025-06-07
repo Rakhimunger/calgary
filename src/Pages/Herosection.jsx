@@ -4,7 +4,6 @@ import House from "../assets/House.jpg";
 const Herosection = () => {
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Custom animation + outlined text styles */}
       <style>
         {`
           @keyframes marqueeRight {
