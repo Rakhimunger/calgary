@@ -23,7 +23,7 @@ const Herosection = () => {
             font-size: 3rem;
             color: white;
             -webkit-text-stroke: 2px black;
-            text-stroke: 2px black;
+            /* text-stroke is non-standard, can be removed */
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
           }
 
@@ -38,7 +38,7 @@ const Herosection = () => {
       </style>
 
       {/* 🌀 Marquee Text */}
-      <div className="absolute inset-0 flex items-center z-10 bg-opacity-30 overflow-hidden">
+      <div className="absolute inset-0 flex items-center z-10 bg-black bg-opacity-30 overflow-hidden">
         <div className="marquee-text">
           <span className="outlined-text mx-10">Wood Fireplaces</span>
           <span className="outlined-text mx-10">Outdoor Fireplaces</span>
