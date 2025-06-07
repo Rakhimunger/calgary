@@ -29,8 +29,8 @@ const blogPosts = [
 
 const BlogCards = () => {
   return (
-    <div className="w-full px-4 sm:px-6 py-10 bg-gradient-to-b from-white to-blue-50 ">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-sky-600 mb-10">
+    <div className="w-full px-4 sm:px-6 py-10 bg-gradient-to-b from-white to-blue-50">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-sky-600 mb-8">
         🔥 Discover Fireplace Tips, Trends & Style
       </h2>
 
@@ -44,7 +44,7 @@ const BlogCards = () => {
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-52 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-40 sm:h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 
@@ -53,7 +53,7 @@ const BlogCards = () => {
                 <p className="text-xs sm:text-sm text-gray-400 mb-1">
                   {post.date} • {post.category}
                 </p>
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-sky-600 transition-colors duration-300">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-800 group-hover:text-sky-600 transition-colors duration-300">
                   {post.title}
                 </h3>
               </div>
