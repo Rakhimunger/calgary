@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Component/Navbar";
-// import Brands from "./Pages/Brands";
+import Brands from "./Pages/Brands";
 // import Herosection from "./Pages/Herosection";
 // import Productsshower from "./Pages/ProductsShowcase";
 // import ServicesSection from "./Pages/ServicesSection";
@@ -14,7 +14,7 @@ const App = () => {
     <div>
       <Navbar />
       <Header />
-      {/* <Brands /> */}
+      <Brands />
       {/* <Herosection />
       <StepsSection />
       <BlogSlider /> */}
