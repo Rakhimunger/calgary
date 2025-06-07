@@ -9,7 +9,7 @@ import Home3 from "../assets/Home3.jpg";
 import Home4 from "../assets/Home4.jpg";
 import Home6 from "../assets/Home6.jpg";
 
-const imageUrls = [House, Home, Home3, Home4, Home6];
+const imageUrls = [House, House2, Home, Home3, Home4, Home6];
 
 export default function IgnitingExcellence() {
   const [tab, setTab] = useState("History");

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
+import { Search, ShoppingCart, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,26 +11,23 @@ export default function Navbar() {
     {
       name: "Brands",
       href: "#",
+      // Example dropdown items (add if needed)
+      // hasDropdown: true,
+      // dropdownItems: ["Brand 1", "Brand 2", "Brand 3"],
     },
     {
       name: "Services",
       href: "#",
+      // hasDropdown: true,
+      // dropdownItems: ["Service 1", "Service 2", "Service 3"],
     },
     { name: "Blog", href: "#" },
     { name: "Contact", href: "#" },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleDropdownToggle = (index) => {
-    setActiveDropdown(activeDropdown === index ? null : index);
-  };
-
   return (
-    <nav className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 shadow-lg relative z-50">
-      <style jsx>{`
+    <>
+      <style>{`
         @keyframes slideDown {
           from {
             transform: translateY(-100%);
@@ -41,12 +38,18 @@ export default function Navbar() {
             opacity: 1;
           }
         }
+
+        .animate-slideDown {
+          animation: slideDown 0.5s ease-out;
+        }
+
         .nav-item {
           position: relative;
           margin: 0 2px;
         }
+
         .nav-item::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 50%;
@@ -57,16 +60,59 @@ export default function Navbar() {
           transition: width 0.3s ease-out;
           clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
           z-index: 1;
+          border-radius: 4px;
         }
+
         .nav-item:hover::before {
           width: 100%;
         }
+
+        .nav-item > a {
+          position: relative;
+          z-index: 2;
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          font-size: 0.875rem; /* text-sm */
+          color: black;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .nav-item > a:hover {
+          color: white;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          padding: 0.5rem 1rem;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 0.25rem;
+          min-width: 10rem;
+          z-index: 50;
+        }
+
+        .dropdown-item {
+          display: block;
+          padding: 0.25rem 0;
+          color: #333;
+          font-size: 14px;
+          transition: color 0.2s;
+          text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+          color: #0d9488;
+        }
       `}</style>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="text-white font-serif text-xs font-bold">
+
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 shadow-sm animate-slideDown">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0 font-serif text-xs font-bold text-black select-none">
               <span className="text-2xl italic">Classic</span>
               <div className="text-sm font-normal tracking-wider">
                 FIREPLACE
@@ -75,66 +121,27 @@ export default function Navbar() {
                 DISTRIBUTORS
               </div>
             </div>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-0">
-              {navItems.map((item, index) => (
-                <div key={item.name} className="relative group nav-item">
-                  <a
-                    href={item.href}
-                    className="relative px-4 py-3 text-gray-300 hover:text-white text-sm font-medium transition-all duration-300 ease-in-out group block overflow-hidden"
-                    onMouseEnter={() =>
-                      item.hasDropdown && setActiveDropdown(index)
-                    }
-                    onMouseLeave={() =>
-                      item.hasDropdown && setActiveDropdown(null)
-                    }
-                  >
-                    <span className="relative z-10 flex items-center gap-1">
-                      {item.name}
-                      {item.hasDropdown && (
-                        <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-                      )}
-                    </span>
+            {/* Desktop Nav */}
+            <div className="hidden md:flex space-x-4 items-center relative">
+              {navItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="nav-item group"
+                  onMouseEnter={() =>
+                    item.hasDropdown
+                      ? setActiveDropdown(item.name)
+                      : setActiveDropdown(null)
+                  }
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <a href={item.href}>{item.name}</a>
 
-                    {/* Hover Shape */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-full bg-teal-600 transition-all duration-300 ease-out transform origin-top group-hover:scale-y-100 scale-y-0"
-                      style={{
-                        clipPath: "polygon(0 0, 100% 0, 85% 100%, 15% 100%)",
-                      }}
-                    ></div>
-
-                    {/* Additional accent shape */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-teal-500 to-teal-700 transition-all duration-300 ease-out transform origin-top group-hover:scale-y-100 scale-y-0"
-                      style={{
-                        clipPath: "polygon(5% 0, 95% 0, 80% 100%, 20% 100%)",
-                        transitionDelay: "50ms",
-                      }}
-                    ></div>
-                  </a>
-
-                  {/* Dropdown Menu */}
-                  {item.hasDropdown && (
-                    <div
-                      className={`absolute top-full left-0 mt-1 w-56 bg-white shadow-lg rounded-md overflow-hidden transition-all duration-200 ${
-                        activeDropdown === index
-                          ? "opacity-100 visible transform translate-y-0"
-                          : "opacity-0 invisible transform -translate-y-2"
-                      }`}
-                      onMouseEnter={() => setActiveDropdown(index)}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      {item.dropdownItems.map((dropdownItem) => (
-                        <a
-                          key={dropdownItem}
-                          href="#"
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors duration-150"
-                        >
-                          {dropdownItem}
+                  {item.hasDropdown && activeDropdown === item.name && (
+                    <div className="dropdown-menu">
+                      {item.dropdownItems.map((dropItem, idx) => (
+                        <a key={idx} href="#" className="dropdown-item">
+                          {dropItem}
                         </a>
                       ))}
                     </div>
@@ -142,104 +149,62 @@ export default function Navbar() {
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Desktop Icons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200">
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200 relative">
-              <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                2
-              </span>
-            </button>
-          </div>
+            {/* Desktop Icons */}
+            <div className="hidden md:flex items-center space-x-4">
+              <button className="text-black hover:text-teal-600 p-2">
+                <Search className="w-5 h-5" />
+              </button>
+              <button className="text-black hover:text-teal-600 p-2 relative">
+                <ShoppingCart className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  2
+                </span>
+              </button>
+            </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-300 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors duration-200"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-black p-2"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-        } overflow-hidden bg-gray-800`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          {navItems.map((item, index) => (
-            <div key={item.name}>
-              <div className="flex items-center justify-between">
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white/90 backdrop-blur-md px-4 py-4 space-y-2 shadow-inner">
+            {navItems.map((item) => (
+              <div key={item.name}>
                 <a
                   href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-colors duration-200 flex-1"
+                  className="block text-gray-900 hover:text-teal-600 text-sm"
                 >
                   {item.name}
                 </a>
-                {item.hasDropdown && (
-                  <button
-                    onClick={() => handleDropdownToggle(index)}
-                    className="px-3 py-2 text-gray-300 hover:text-white"
-                  >
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        activeDropdown === index ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                )}
-              </div>
-
-              {/* Mobile Dropdown */}
-              {item.hasDropdown && (
-                <div
-                  className={`ml-4 space-y-1 transition-all duration-200 ${
-                    activeDropdown === index
-                      ? "max-h-40 opacity-100"
-                      : "max-h-0 opacity-0"
-                  } overflow-hidden`}
-                >
-                  {item.dropdownItems.map((dropdownItem) => (
-                    <a
-                      key={dropdownItem}
-                      href="#"
-                      className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-gray-700 rounded-md transition-colors duration-200"
+                {item.hasDropdown &&
+                  item.dropdownItems.map((subItem, idx) => (
+                    <div
+                      key={idx}
+                      className="ml-4 text-sm text-gray-600 hover:text-teal-600"
                     >
-                      {dropdownItem}
-                    </a>
+                      <a href="#">{subItem}</a>
+                    </div>
                   ))}
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Mobile Icons */}
-          <div className="flex items-center space-x-4 px-3 py-2 border-t border-gray-600 mt-4">
-            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200">
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200 relative">
-              <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                2
-              </span>
-            </button>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
-    </nav>
+        )}
+      </nav>
+    </>
   );
 }
