@@ -1,79 +1,162 @@
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Search, ShoppingCart, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const navItems = [
+    { name: "Home", href: "#" },
+    { name: "About Us", href: "#" },
+    { name: "Brands", href: "#" },
+    { name: "Services", href: "#" },
+    { name: "Blog", href: "#" },
+    { name: "Contact", href: "#" },
+  ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <header className="bg-black text-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
-        {/* Logo */}
-        <div className="text-xl font-bold">Classic Fireplace</div>
+    <nav className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 shadow-lg relative z-50">
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .nav-item {
+          position: relative;
+          margin: 0 2px;
+        }
+        .nav-item::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 100%;
+          background: linear-gradient(135deg, #0d9488, #14b8a6);
+          transition: width 0.3s ease-out;
+          clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
+          z-index: 1;
+        }
+        .nav-item:hover::before {
+          width: 100%;
+        }
+      `}</style>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8 items-center text-sm font-medium">
-          <a href="#" className="hover:text-teal-400">
-            Home
-          </a>
-          <a href="#" className="hover:text-teal-400">
-            About Us
-          </a>
-          {/* Dropdown - Brands */}
-          <div className="group relative">
-            <button className="hover:text-teal-400">Brands</button>
-            <div className="absolute hidden group-hover:block bg-white text-black mt-2 py-2 rounded shadow-md"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <div className="text-white font-serif text-xl font-bold">
+              <span className="text-2xl italic">Classic</span>
+              <div className="text-sm font-normal tracking-wider">
+                FIREPLACE
+              </div>
+              <div className="text-xs font-light tracking-widest">
+                DISTRIBUTORS
+              </div>
+            </div>
           </div>
-          {/* Dropdown - Services */}
-          <div className="group relative">
-            <button className="hover:text-teal-400">Services</button>
-            <div className="absolute hidden group-hover:block bg-white text-black mt-2 py-2 rounded shadow-md"></div>
-          </div>
-          <a href="#" className="hover:text-teal-400">
-            Blog
-          </a>
-          <a href="#" className="hover:text-teal-400">
-            Contact
-          </a>
-          <button className="text-xl">&#128722;</button> {/* Cart icon */}
-          <button className="text-xl">&#128269;</button> {/* Search icon */}
-        </nav>
 
-        {/* Mobile Icon */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu}>
-            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-0">
+              {navItems.map((item) => (
+                <div key={item.name} className="relative nav-item">
+                  <a
+                    href={item.href}
+                    className="relative px-4 py-3 text-gray-300 hover:text-white text-sm font-medium transition-all duration-300 ease-in-out group block overflow-hidden"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+
+                    <div
+                      className="absolute top-0 left-0 right-0 h-full bg-teal-600 transition-all duration-300 ease-out transform origin-top group-hover:scale-y-100 scale-y-0"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 85% 100%, 15% 100%)",
+                      }}
+                    ></div>
+                    <div
+                      className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-teal-500 to-teal-700 transition-all duration-300 ease-out transform origin-top group-hover:scale-y-100 scale-y-0"
+                      style={{
+                        clipPath: "polygon(5% 0, 95% 0, 80% 100%, 20% 100%)",
+                        transitionDelay: "50ms",
+                      }}
+                    ></div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Icons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200 relative">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                2
+              </span>
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-300 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors duration-200"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-black text-white px-4 py-2 space-y-2">
-          <a href="#" className="block hover:text-teal-400">
-            Home
-          </a>
-          <a href="#" className="block hover:text-teal-400">
-            About Us
-          </a>
+      {/* Mobile Navigation */}
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        } overflow-hidden bg-gray-800`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-colors duration-200"
+            >
+              {item.name}
+            </a>
+          ))}
 
-          <div>
-            <p className="font-semibold">Brands</p>
+          {/* Mobile Icons */}
+          <div className="flex items-center space-x-4 px-3 py-2 border-t border-gray-600 mt-4">
+            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-200 relative">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 bg-teal-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                2
+              </span>
+            </button>
           </div>
-
-          <div>
-            <p className="font-semibold">Services</p>
-          </div>
-
-          <a href="#" className="block hover:text-teal-400">
-            Blog
-          </a>
-          <a href="#" className="block hover:text-teal-400">
-            Contact
-          </a>
         </div>
-      )}
-    </header>
+      </div>
+    </nav>
   );
 }
