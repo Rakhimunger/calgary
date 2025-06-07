@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import House2 from "../assets/House2.jpg";
+import House from "../assets/House.jpg";
 
 export default function Header() {
   return (
     <div className="relative w-full h-screen">
       {/* Background Image */}
       <img
-        src={House2}
+        src={House}
         alt="Fireplace Background"
         className="w-full h-full object-cover"
       />
