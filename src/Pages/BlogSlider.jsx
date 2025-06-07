@@ -1,7 +1,6 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 
-// Keep your original images
 import Home from "../assets/Home.jpg";
 import Home5 from "../assets/Home5.jpg";
 import Home6 from "../assets/Home6.jpg";
@@ -14,7 +13,6 @@ const blogPosts = [
     category: "Insights",
     image: Home,
   },
-
   {
     title: "Top 10 Tips for Fireplace Efficiency: Enhance Your Home’s Warmth",
     date: "November 29, 2023",

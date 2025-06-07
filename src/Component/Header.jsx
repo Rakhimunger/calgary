@@ -2,19 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import House from "../assets/House.jpg";
 
-export default function Header() {
+const Header = () => {
   return (
     <div className="relative w-full h-screen">
-      {/* ✅ Background Image as-is */}
+      {/* ✅ Exact Image Without Overlay */}
       <img
         src={House}
         alt="Fireplace Background"
         className="w-full h-full object-cover"
       />
 
-      {/* ❌ Removed dark gradient overlay */}
-
-      {/* ✅ Centered Animated Content */}
+      {/* ✅ Centered Content on Top */}
       <div className="absolute inset-0 flex flex-col justify-center items-center px-6 text-center">
         <motion.div
           initial={{ y: -100, opacity: 0 }}
@@ -22,7 +20,7 @@ export default function Header() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-black max-w-3xl"
         >
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight drop-shadow-lg whitespace-nowrap overflow-hidden text-ellipsis">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight drop-shadow-lg">
             🔥 Fireplace For New Homes
           </h1>
           <p className="text-md sm:text-lg md:text-xl text-black mb-8 drop-shadow-sm">
@@ -30,7 +28,6 @@ export default function Header() {
             range of quality fireplaces built to impress.
           </p>
 
-          {/* CTA Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -42,4 +39,6 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+
+export default Header;
